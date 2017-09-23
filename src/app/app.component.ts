@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+    max = 10;
+    constructor() {
+        setTimeout(() => {
+            this.max = 20;
+        }, 1000);
+    }
 }
