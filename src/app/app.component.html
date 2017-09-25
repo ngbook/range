@@ -1,7 +1,10 @@
 <div class="app-root">
     <div class="items">
-        <div class="item" *range="let index from 1 to max;">
+        <div class="item" *range="let index from min to max;">
             <h2>{{index}}</h2>
         </div>
+        <!-- <div class="item" *range="let index to max;">
+            <h2>{{index}}</h2>
+        </div> -->
     </div>
 </div>
