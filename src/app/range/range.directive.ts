@@ -1,5 +1,5 @@
 import {
-  Directive, Input,
+  Directive, Input, OnInit,
   ViewContainerRef, SimpleChanges,
   TemplateRef, OnChanges,
 } from '@angular/core';
@@ -12,7 +12,7 @@ export class RangeContext {
 @Directive({
   selector: '[range][rangeTo]'
 })
-export class RangeDirective implements OnChanges {
+export class RangeDirective implements OnInit, OnChanges {
     @Input('rangeFrom')
     start: number;
     @Input('rangeTo')
@@ -27,14 +27,7 @@ export class RangeDirective implements OnChanges {
         private viewcontainer: ViewContainerRef,
         private templateRef: TemplateRef<RangeContext>) { }
 
-    ngAfterViewInit() {
-        if (!this.start) {
-            if (this.end < 0) {
-                console.warn('from默认为0，此时to后的参数不能为负');
-                return;
-            }
-            this.start = 0;
-        }
+    ngOnInit() {
         if (this.end > this.start) {
             // this.applyChanges();
         } else {
@@ -45,6 +38,13 @@ export class RangeDirective implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         if ('start' in changes || 'end' in changes) {
+            if (this.start === undefined) {
+                if (this.end < 0) {
+                    console.warn('from默认为0，此时to后的参数不能为负');
+                    return;
+                }
+                this.start = 0;
+            }
             if (this.end > this.start) {
                 this.applyChanges();
             } else {
@@ -98,7 +98,7 @@ export class RangeDirective implements OnChanges {
                 let view = this.viewcontainer.createEmbeddedView(
                     this.templateRef, new RangeContext(i), index);
                 index ++; // 不管面还是后面，都要加
-                view.detectChanges();
+                // view.detectChanges();
             } else { // 删除View
                 if (!isFront) {
                     --index; // 反着删

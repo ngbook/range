@@ -1,16 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { RangeDirective } from './range/range.directive';
+import { RangeModule } from './range';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RangeDirective,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RangeModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

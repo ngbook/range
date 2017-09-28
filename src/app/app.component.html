@@ -1,10 +1,12 @@
 <div class="app-root">
     <div class="items">
+        <h2>测试*range指令</h2>
         <div class="item" *range="let index from min to max;">
-            <h2>{{index}}</h2>
+            <h3>{{index}}</h3>
         </div>
-        <!-- <div class="item" *range="let index to max;">
-            <h2>{{index}}</h2>
-        </div> -->
+        <br/>
+        <div class="item" *range="let index to max;">
+            <h3>{{index}}</h3>
+        </div>
     </div>
 </div>
