@@ -3,10 +3,6 @@ import {
   DoCheck, AfterViewInit, TemplateRef
 } from '@angular/core';
 
-export class RangeContext {
-    constructor(public $implicit: number) {}
-}
-
 /* tslint:disable */
 @Directive({
   selector: '[range][rangeFrom][rangeTo]'
@@ -27,5 +23,8 @@ export class RangeDirective implements AfterViewInit {
             view.detectChanges();
         }
     }
+}
 
+export class RangeContext {
+    constructor(public $implicit: number) {}
 }

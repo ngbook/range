@@ -7,7 +7,7 @@ import { RangeDirective } from './range/range.directive';
 @NgModule({
   declarations: [
     AppComponent,
-    RangeDirective
+    RangeDirective,
   ],
   imports: [
     BrowserModule
